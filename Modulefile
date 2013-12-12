@@ -1,0 +1,7 @@
+name          'wharenn-anope'
+version       '0.0.1'
+author        'wharenn'
+license       'MIT'
+summary       'Module to install anope irc services'
+project_page  'https://github.com/wharenn/wharenn-anope'
+description   'This module will download, compile and install anope irc services'
