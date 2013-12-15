@@ -28,14 +28,14 @@ set -e
 
 case "$1" in
   start)
-        PID="`ps x | grep $DAEMON -m 1 | awk '{ print $1 }'`"
+        PID="`ps -e | grep services -m 1 | awk '{ print $1 }'`"
         if [ -z $PID ] ; then
           echo -n "Starting $NAME with pid $PIDFILE"
           start-stop-daemon --oknodo --start --quiet --exec $DAEMON \
                 --user $USER -c $USER --pidfile "$PIDFILE" > /dev/null
           echo "."
         else
-          echo "ERROR: $NAME is alrunning on pid $PID..."
+          echo "ERROR: $NAME is already running on pid $PID..."
           exit 1
         fi
 
@@ -54,7 +54,7 @@ case "$1" in
         break
         ;;
   status)
-        PID="`ps x | grep $DAEMON -m 1 | awk '{ print $1 }'`"
+        PID="`ps -e | grep services -m 1 | awk '{ print $1 }'`"
         if [ -z $PID ] ; then
           echo "$NAME is not running."
         else
