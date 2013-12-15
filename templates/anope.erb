@@ -62,7 +62,17 @@ case "$1" in
         fi
         break
         ;;
+  rehash)
+        if [ ! -r $PIDFILE ] ; then
+          echo "ERROR: $NAME is not running"
+          exit 1
+        fi
 
+        echo "Rehashing $NAME"
+        kill -12 `cat $PIDFILE`
+        echo "."
+        break
+        ;;
   restart|force-reload)
         echo -n "Restarting $NAME"
         if [ -f $PIDFILE ]; then
@@ -76,7 +86,7 @@ case "$1" in
         break
         ;;
   *)
-        echo "Usage: $0 {start|stop|restart|force-reload}" >&2
+        echo "Usage: $0 {start|stop|restart|rehash|force-reload}" >&2
         exit 0
         ;;
 esac
