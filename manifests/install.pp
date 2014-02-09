@@ -1,4 +1,8 @@
 class anope::install {
+  
+  Exec {
+    path => ['/bin', '/usr/bin', '/usr/local/bin', '/sbin', '/usr/sbin'],
+  }
 
   $filename = 'anope'
   $archive = "${filename}.tar.gz"
