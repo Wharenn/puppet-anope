@@ -1,5 +1,7 @@
 # Anope puppet module
 
+This is a fork of [Wharenn's anope puppet module](https://github.com/Wharenn/puppet-anope).
+
 Current module version : 1.8
 
 Supported Anope version : 1.8.8
@@ -12,7 +14,7 @@ You may be interested by the following modules :
 
 * UnrealIRC Puppet Module for IRC server
 
-  https://github.com/Wharenn/puppet-unrealirc
+  https://github.com/Tehnix/puppet-unrealirc
 
 ## How to use
 
@@ -78,13 +80,8 @@ For Anope related questions, please have a look to Anope website documentation :
 http://anope.org
 
 
-Please report any module issue to project bug tracker on github :
-
-https://github.com/Wharenn/puppet-anope/issues
-
-
-Contributions in form of pull requests are also welcomed! :-)
+Please report any module issue to project bug tracker on github
 
 ## Licence
 
-This module is distributed under the MIT licence. Please check the full licence included at the root of the project tree.
+This module is distributed under the MIT license. Please check the full license included at the root of the project tree.
