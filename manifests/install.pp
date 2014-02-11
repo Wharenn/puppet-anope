@@ -8,17 +8,13 @@ class anope::install {
   $archive = "${filename}.tar.gz"
 
   # Create irc user and group
-  if !defined(Group[$anope::group]) {
-    group { $group:
-      ensure  => present,
-    }
+  group { $anope::group:
+    ensure  => present,
   }
-
-  if !defined(User[$anope::user]) {
-    user { $user:
-      ensure  => present,
-      gid     => $group,
-    }
+  user { $anope::user:
+    ensure  => present,
+    gid     => $anope::group,
+    require => Group[$anope::group],
   }
 
   # Install required mysql lib for anope database use
@@ -53,11 +49,11 @@ class anope::install {
     timeout => 0,
     cwd     => "${anope::install_path}",
     creates => "${anope::services_path}/anoperc",
-    require => Exec['anope-dir'],
+    require => [ Package[libmysqlclient15-dev], Exec['anope-dir'] ],
   }
 
   exec { 'chown-anope-dir':
     command => "chown -R ${anope::user}:${anope::group} ${anope::install_path}",
-    require => Exec['make-anope'],
+    require => [ User[$anope::user], Group[$anope::group], Exec['make-anope'] ],
   }
 }
